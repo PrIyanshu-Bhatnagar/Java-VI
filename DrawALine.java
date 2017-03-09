@@ -6,6 +6,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 //import javafx.scene.event.*;
 import javafx.scene.canvas.*;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.collections.*;
 import javafx.geometry.*;
@@ -17,6 +18,7 @@ public class DrawALine extends Application
     double x1, x2, y1, y2;
     Line line;
     Circle circle;
+    Text textA;
     Pane pane;
     Scene scene;
     Color circleColor = new Color(0.1, 0.2, 0.3, 1.0); //(Red, Green, Blue, Opacity)
@@ -35,6 +37,9 @@ public class DrawALine extends Application
        // circle.setCenterY(100);
         circle.setRadius(40);
 
+        textA = new Text(100, 200, "Hello");
+        textA.setStroke(Color.RED);
+
         pane = new Pane();
         //Properties of Line
         line.startXProperty().bind(pane.widthProperty().divide(2));
@@ -49,7 +54,7 @@ public class DrawALine extends Application
         circle.radiusProperty().bind(pane.widthProperty().divide(3));
         circle.setFill(circleColor);
 
-        pane.getChildren().addAll(line, circle);
+        pane.getChildren().addAll(line, circle, textA);
         scene = new Scene(pane, 400, 400);
         stage.setScene(scene);
         stage.show();
